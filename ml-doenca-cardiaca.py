@@ -66,3 +66,5 @@ classificador.compile(optimizer=AdamW(learning_rate=1e-3, weight_decay=1e-4),
                       loss='binary_crossentropy',
                       metrics=['binary_accuracy'])
 #%%
+#Treinando modelo
+classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 5000)
