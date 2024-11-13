@@ -71,3 +71,33 @@ classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, e
 #%%
 previsoes = classificador.predict(previsores_teste)
 #%%
+import numpy as np
+
+# Convert probabilities to class labels using a threshold (e.g., 0.5)
+previsoes = (previsoes > 0.5).astype(int)
+
+# Now, you can use previsoes with accuracy_score and other metrics:
+from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
+acuracia = accuracy_score(classe_teste, previsoes)
+precisao = precision_score(classe_teste, previsoes)
+recall = recall_score(classe_teste, previsoes)
+f1score = f1_score(classe_teste, previsoes)
+matriz = confusion_matrix(classe_teste, previsoes)
+
+print('Acurácia: %f' % acuracia)
+print('Precision: %f' % precisao)
+print('Recall: %f' % recall)
+print('F1-Score: %f' % f1score)
+print(matriz)
+#%%
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
+
+matriz = confusion_matrix(classe_teste, previsoes)
+# Visualize a matriz de confusão usando seaborn
+plt.figure(figsize=(8, 6))
+sns.heatmap(matriz, annot=True, fmt="d", cmap="Blues", cbar=False)
+plt.xlabel("Classe Prevista")
+plt.ylabel("Classe Real")
+plt.title("Matriz de Confusão")
+plt.show()
