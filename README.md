@@ -21,6 +21,6 @@ doença cardíaca no paciente.
 - 8 Quantos conjuntos de pesos foram salvos em cada época ?
 - 9 Quantas atualizações de peso (interações) foram antes que um valor seja salvo ?
 
-# Desenvolvimento
+## Desenvolvimento
 - Python 3.11.10
 - IDE Spyder 6.0.2
