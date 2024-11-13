@@ -39,20 +39,24 @@ print(entradas.shape)
 #%%
 import keras
 from keras.models import Sequential
+from keras.layers import Dense, Dropout
 from keras.layers import Dense
 
 classificador = Sequential()
-classificador.add(Dense(units = 64, input_dim = 13
+classificador.add(Dense(units = 128, input_dim = 13
                         ,kernel_initializer='random_uniform',
                         activation = 'relu'))
+classificador.add(Dropout(0.2))  # Dropout para regularização
 
 classificador.add(Dense(units = 32
                         ,kernel_initializer='random_uniform',
                         activation = 'relu'))
+classificador.add(Dropout(0.2))  # Dropout para regularização
 
-classificador.add(Dense(units = 16
+classificador.add(Dense(units = 32
                         ,kernel_initializer='random_uniform',
                         activation = 'relu'))
+classificador.add(Dropout(0.2))  # Dropout para regularização
 
 classificador.add(Dense(units = 1
                         ,kernel_initializer='random_uniform',
@@ -62,19 +66,19 @@ classificador.add(Dense(units = 1
 from keras.optimizers import AdamW # Import AdamW from Keras
 
 # Compile the model with AdamW optimizer
-classificador.compile(optimizer=AdamW(learning_rate=1e-3, weight_decay=1e-4),
+classificador.compile(optimizer=AdamW(learning_rate=0.0001, weight_decay=1e-4),
                       loss='binary_crossentropy',
                       metrics=['binary_accuracy'])
 #%%
-#Treinando modelo
-classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 5000)
+#Treinando modelogit
+classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 1000)
 #%%
 previsoes = classificador.predict(previsores_teste)
 #%%
 import numpy as np
 
 # Convert probabilities to class labels using a threshold (e.g., 0.5)
-previsoes = (previsoes > 0.5).astype(int)
+previsoes = (previsoes > 0.4).astype(int)
 
 # Now, you can use previsoes with accuracy_score and other metrics:
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
