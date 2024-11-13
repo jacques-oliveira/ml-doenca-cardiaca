@@ -58,3 +58,11 @@ classificador.add(Dense(units = 1
                         ,kernel_initializer='random_uniform',
                         activation = 'sigmoid'))
 #%%
+#classificador.compile(optimizer = 'adam', loss = 'binary_crossentropy',metrics = ['binary_accuracy'])
+from keras.optimizers import AdamW # Import AdamW from Keras
+
+# Compile the model with AdamW optimizer
+classificador.compile(optimizer=AdamW(learning_rate=1e-3, weight_decay=1e-4),
+                      loss='binary_crossentropy',
+                      metrics=['binary_accuracy'])
+#%%
