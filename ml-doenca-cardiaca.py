@@ -41,11 +41,12 @@ import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from keras.layers import Dense
+from keras.regularizers import l2
 
 classificador = Sequential()
-classificador.add(Dense(units = 128, input_dim = 13
+classificador.add(Dense(units = 64, input_dim = 13
                         ,kernel_initializer='random_uniform',
-                        activation = 'relu'))
+                        activation = 'relu',kernel_regularizer=l2(0.01)))
 classificador.add(Dropout(0.2))  # Dropout para regularização
 
 classificador.add(Dense(units = 32
@@ -53,10 +54,15 @@ classificador.add(Dense(units = 32
                         activation = 'relu'))
 classificador.add(Dropout(0.2))  # Dropout para regularização
 
-classificador.add(Dense(units = 32
+classificador.add(Dense(units = 24
                         ,kernel_initializer='random_uniform',
                         activation = 'relu'))
-classificador.add(Dropout(0.2))  # Dropout para regularização
+classificador.add(Dropout(0.1))  # Dropout para regularização
+
+classificador.add(Dense(units = 24
+                        ,kernel_initializer='random_uniform',
+                        activation = 'relu'))
+classificador.add(Dropout(0.1))  # Dropout para regularização
 
 classificador.add(Dense(units = 1
                         ,kernel_initializer='random_uniform',
@@ -70,10 +76,11 @@ classificador.compile(optimizer=AdamW(learning_rate=0.0001, weight_decay=1e-4),
                       loss='binary_crossentropy',
                       metrics=['binary_accuracy'])
 #%%
-#Treinando modelogit
-classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 1000)
+#Treinando modelog
+classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 5000)
 #%%
 previsoes = classificador.predict(previsores_teste)
+
 #%%
 import numpy as np
 
