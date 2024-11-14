@@ -1,5 +1,5 @@
 # Deep Learning RNA - Presença de Doença Cardíaca em paciente
-## Classificação de doença cardíaca usando RNA
+## Classificação de ataque cardíaco usando RNA
 <div>
   <img src = https://www.heart.org/-/media/Images/News/2021/June-2021/0623SilentHeartAttack_SC.jpg?sc_lang=en width="380">
 </div>
