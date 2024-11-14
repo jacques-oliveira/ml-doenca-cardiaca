@@ -26,6 +26,11 @@ doença cardíaca no paciente.
 - IDE Spyder 6.0.2
 
 ## Resultados
+- Acurácia: 0.862069
+- Precision: 0.846154
+- Recall: 0.942857
+- F1-Score: 0.891892
+
 <img width="491" alt="Figure 2024-11-13 221446" src="https://github.com/user-attachments/assets/df98f809-4ba7-4916-9bf3-10a0d492b153">
 
 <div>
@@ -33,5 +38,4 @@ doença cardíaca no paciente.
     o Recall é importante, já que se prezou por não dizer que o paciente teve infarto, tendo ele na verdade infartado.
   </p>
 </div>
-
 
