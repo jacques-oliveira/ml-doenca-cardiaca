@@ -42,27 +42,25 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from keras.layers import Dense
 from keras.regularizers import l2
+from keras.layers import BatchNormalization
+#%%
 
 classificador = Sequential()
-classificador.add(Dense(units = 64, input_dim = 13
+classificador.add(Dense(units = 128, input_dim = 13
                         ,kernel_initializer='random_uniform',
                         activation = 'relu',kernel_regularizer=l2(0.01)))
 classificador.add(Dropout(0.2))  # Dropout para regularização
+classificador.add(BatchNormalization())  # Adicionando Batch Normalization
 
-classificador.add(Dense(units = 32
+classificador.add(Dense(units = 48
                         ,kernel_initializer='random_uniform',
                         activation = 'relu'))
 classificador.add(Dropout(0.2))  # Dropout para regularização
 
-classificador.add(Dense(units = 24
+classificador.add(Dense(units = 12
                         ,kernel_initializer='random_uniform',
                         activation = 'relu'))
-classificador.add(Dropout(0.1))  # Dropout para regularização
-
-classificador.add(Dense(units = 24
-                        ,kernel_initializer='random_uniform',
-                        activation = 'relu'))
-classificador.add(Dropout(0.1))  # Dropout para regularização
+classificador.add(Dropout(0.2))  # Dropout para regularização
 
 classificador.add(Dense(units = 1
                         ,kernel_initializer='random_uniform',
