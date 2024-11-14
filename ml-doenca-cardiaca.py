@@ -42,37 +42,33 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from keras.layers import Dense
 from keras.regularizers import l2
+from keras.layers import BatchNormalization
+#%%
 
 classificador = Sequential()
 classificador.add(Dense(units = 64, input_dim = 13
                         ,kernel_initializer='random_uniform',
                         activation = 'relu',kernel_regularizer=l2(0.01)))
-classificador.add(Dropout(0.2))  # Dropout para regularização
+classificador.add(BatchNormalization())  # Adicionando Batch Normalization
+#classificador.add(Dropout(0.2))  # Dropout para regularização
 
 classificador.add(Dense(units = 32
                         ,kernel_initializer='random_uniform',
                         activation = 'relu'))
-classificador.add(Dropout(0.2))  # Dropout para regularização
 
-classificador.add(Dense(units = 24
+classificador.add(Dense(units = 48
                         ,kernel_initializer='random_uniform',
                         activation = 'relu'))
-classificador.add(Dropout(0.1))  # Dropout para regularização
-
-classificador.add(Dense(units = 24
-                        ,kernel_initializer='random_uniform',
-                        activation = 'relu'))
-classificador.add(Dropout(0.1))  # Dropout para regularização
 
 classificador.add(Dense(units = 1
                         ,kernel_initializer='random_uniform',
                         activation = 'sigmoid'))
-#%%
+
 #classificador.compile(optimizer = 'adam', loss = 'binary_crossentropy',metrics = ['binary_accuracy'])
 from keras.optimizers import AdamW # Import AdamW from Keras
 
 # Compile the model with AdamW optimizer
-classificador.compile(optimizer=AdamW(learning_rate=0.0001, weight_decay=1e-4),
+classificador.compile(optimizer=AdamW(learning_rate=0.00001, weight_decay=1e-4),
                       loss='binary_crossentropy',
                       metrics=['binary_accuracy'])
 #%%
@@ -85,7 +81,7 @@ previsoes = classificador.predict(previsores_teste)
 import numpy as np
 
 # Convert probabilities to class labels using a threshold (e.g., 0.5)
-previsoes = (previsoes > 0.4).astype(int)
+previsoes = (previsoes > 0.5).astype(int)
 
 # Now, you can use previsoes with accuracy_score and other metrics:
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
