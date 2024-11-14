@@ -41,6 +41,7 @@ doença cardíaca no paciente.
 
 ## Desenvolvimento
 - Python 3.11.10
+- Keras, sklearn, numpy, pandas, matplotlib, seaborn
 - IDE Spyder 6.0.2
 
 ## Resultados
