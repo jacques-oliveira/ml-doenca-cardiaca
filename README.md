@@ -24,3 +24,14 @@ doença cardíaca no paciente.
 ## Desenvolvimento
 - Python 3.11.10
 - IDE Spyder 6.0.2
+
+## Resultados
+<img width="491" alt="Figure 2024-11-13 221446" src="https://github.com/user-attachments/assets/df98f809-4ba7-4916-9bf3-10a0d492b153">
+
+<div>
+  <p><strong>Obs:</strong> Neste treinamento foi priorizado ter o menor possível Falsos Negativos, ou seja, 
+    o Recall é importante, já que se prezou por não dizer que o paciente teve infarto, tendo ele na verdade infartado.
+  </p>
+</div>
+
+
