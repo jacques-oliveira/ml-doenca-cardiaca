@@ -7,6 +7,24 @@ Fazer a classificação de um banco de dados com 13 atributos e um target. Em pa
 Cleveland, que é o único usado pelos pesquisadores de ML até hoje. O campo "objetivo" refere-se á presença de 
 doença cardíaca no paciente.
 
+<br>
+<br>
+
+- age = idade em anos
+- sex(1 = male; 0 = female)
+- cp tipo de dor no peito
+- trestbps pressão sanguínea em repouso(in mm Hg on admission to the hospital)
+- chol colesterol sérico mg/dl
+- fbs (açucar no sangue> 120 mg/dl) (1 = true; 0 = false)
+- restecg resultados eletrocardiográficos em repouso (0, 1 e 2)
+- thalach frequência cardíaca máxima atingida
+- exang angina induzida por exercício(1 = yes; 0 = no)
+- oldpeak depressão ST induzida pelo exercício em relação ao repouso
+- slope a inclinação do segmento ST do pico do exercício
+- ca número de vasos principais (0-3) coloridos por fluoroscopia
+- thal 3 = normal; 6 = defeito fixo; 7 = defeito reversível de dor no peito
+- target 1 or 0 (1 = doente e 0 = saudável)
+
 ## Apresentar como resultado a acurácia, precisão, recall, f1_score e matriz de confusão do classificador
 - Utilizar Batch Size = 10
 - Percentual para %teste = n * 20, aqui adotado n = 0.95, %teste = 19
