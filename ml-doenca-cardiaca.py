@@ -47,15 +47,14 @@ from keras.initializers import HeNormal
 #%%
 classificador = Sequential()
 classificador.add(Dense(units = 64, input_dim = 13
-                        ,kernel_initializer='random_uniform',kernel_regularizer=l2(0.0005),
+                        ,kernel_initializer='random_uniform',kernel_regularizer=l2(0.005),
                         activation = 'relu'))
-classificador.add(Dropout(0.1))  # Dropout para regularização 
 classificador.add(BatchNormalization())  # Adicionando Batch Normalization
 
 classificador.add(Dense(units = 48
                         ,kernel_initializer=HeNormal(),
                         activation = 'relu'))
-classificador.add(Dropout(0.1))  # Dropout para regularização 
+classificador.add(Dropout(0.05))  # Dropout para regularização 
 
 classificador.add(Dense(units = 1
                         ,kernel_initializer=HeNormal(),

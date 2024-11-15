@@ -1,4 +1,4 @@
-#!/home/jacques/Documents/sistemas-controle-inteligentes/lista-2-rna/ml-doenca-cardiaca/ml-spyder/bin/python
+#!/home/jacques/Documents/sistemas-controle-inteligentes/lista-2-rna/ml-doenca-cardiaca/ml-spyder/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
