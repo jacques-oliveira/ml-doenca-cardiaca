@@ -31,14 +31,14 @@ doença cardíaca no paciente.
 
 ## Desenvolvimento
 - Python 3.11.10
-- Keras, sklearn, numpy, pandas, matplotlib, seaborn
+- keras, sklearn, numpy, pandas, matplotlib, seaborn
 - IDE Spyder 6.0.2
 
 ## Resultados
 - Acurácia: 0.879310
-- Precision: 0.806452
-- Recall: 0.961538
-- F1-Score: 0.877193
+- Precision: 0.823529
+- Recall: 0.965517
+- F1-Score: 0.888889
 
 <img width="491" alt="Figure 2024-11-13 221446" src="https://github.com/user-attachments/assets/e04759ca-65d0-4fa3-b1fe-8c748e62e2c3">
 
