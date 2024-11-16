@@ -61,7 +61,7 @@ classificador.add(Dense(units = 64
                         activation = 'relu'))
 classificador.add(Dropout(0.05))  # Dropout para regularização 
 
-classificador.add(Dense(units = 32
+classificador.add(Dense(units = 48
                         ,kernel_initializer=HeNormal(),
                         activation = 'relu'))
 classificador.add(Dropout(0.05))  # Dropout para regularização
