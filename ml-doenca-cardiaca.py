@@ -47,11 +47,11 @@ from keras.initializers import HeNormal
 #%%
 classificador = Sequential()
 classificador.add(Dense(units = 128, input_dim = 13
-                        ,kernel_initializer='random_uniform',kernel_regularizer=l2(0.01),
+                        ,kernel_initializer='random_uniform',kernel_regularizer=l2(0.0005),
                         activation = 'relu'))
 classificador.add(BatchNormalization())  # Adicionando Batch Normalization
 
-classificador.add(Dense(units = 48
+classificador.add(Dense(units = 64
                         ,kernel_initializer=HeNormal(),
                         activation = 'relu'))
 classificador.add(Dropout(0.05))  # Dropout para regularização 
@@ -74,7 +74,7 @@ classificador.compile(optimizer=AdamW(learning_rate=0.00001, weight_decay=1e-4),
                        metrics=['binary_accuracy'])
 #%%
 #Treinando modelog
-classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 600)
+classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 800)
 #%%
 previsoes = classificador.predict(previsores_teste)
 
