@@ -35,10 +35,10 @@ doença cardíaca no paciente.
 - IDE Spyder 6.0.2
 
 ## Resultados
-- Acurácia: 0.879310
-- Precision: 0.823529
-- Recall: 0.965517
-- F1-Score: 0.888889
+- Acurácia: 0.810345
+- Precision: 0.780488
+- Recall: 0.941176
+- F1-Score: 0.853333
 
 <img width="491" alt="Figure 2024-11-13 221446" src="https://github.com/user-attachments/assets/e2d8dd32-8b90-4bb5-bbff-6bc4311de784">
 
