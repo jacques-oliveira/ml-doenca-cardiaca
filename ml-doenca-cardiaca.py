@@ -22,6 +22,11 @@ from sklearn.model_selection import train_test_split
 #19% para teste
 previsores_treinamento, previsores_teste, classe_treinamento, classe_teste = train_test_split(entradas, saida, test_size=0.19)
 #%%
+print('previsores_treinamento: ' + str(previsores_treinamento.shape))
+print('previsores_teste: ' + str(previsores_teste.shape))
+print('classe_treinamento: ' + str(classe_treinamento.shape))
+print('classe_teste: ' + str(classe_teste.shape))
+#%%
 #Normalizando
 from sklearn.preprocessing import MinMaxScaler
 #%%
