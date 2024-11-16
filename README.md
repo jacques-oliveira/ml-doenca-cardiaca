@@ -27,7 +27,7 @@ doença cardíaca no paciente.
 
 ## Apresentar como resultado a acurácia, precisão, recall, f1_score e matriz de confusão do classificador
 - Utilizar Batch Size = 10
-- Percentual para %teste = n * 20, aqui adotado n = 0.95, %teste = 19
+- Percentual para %teste = 19
 
 ## Desenvolvimento
 - Python 3.11.10
