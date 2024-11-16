@@ -46,8 +46,8 @@ from keras.layers import BatchNormalization
 from keras.initializers import HeNormal
 #%%
 classificador = Sequential()
-classificador.add(Dense(units = 64, input_dim = 13
-                        ,kernel_initializer='random_uniform',kernel_regularizer=l2(0.005),
+classificador.add(Dense(units = 128, input_dim = 13
+                        ,kernel_initializer='random_uniform',kernel_regularizer=l2(0.01),
                         activation = 'relu'))
 classificador.add(BatchNormalization())  # Adicionando Batch Normalization
 
@@ -55,6 +55,11 @@ classificador.add(Dense(units = 48
                         ,kernel_initializer=HeNormal(),
                         activation = 'relu'))
 classificador.add(Dropout(0.05))  # Dropout para regularização 
+
+classificador.add(Dense(units = 32
+                        ,kernel_initializer=HeNormal(),
+                        activation = 'relu'))
+classificador.add(Dropout(0.05))  # Dropout para regularização
 
 classificador.add(Dense(units = 1
                         ,kernel_initializer=HeNormal(),
@@ -69,13 +74,13 @@ classificador.compile(optimizer=AdamW(learning_rate=0.00001, weight_decay=1e-4),
                        metrics=['binary_accuracy'])
 #%%
 #Treinando modelog
-classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 1800)
+classificador.fit(previsores_treinamento, classe_treinamento, batch_size = 10, epochs = 600)
 #%%
 previsoes = classificador.predict(previsores_teste)
 
 import numpy as np
 # Convert probabilities to class labels using a threshold (e.g., 0.5)
-previsoes = (previsoes > 0.4).astype(int)
+previsoes = (previsoes > 0.2).astype(int)
 
 # Now, you can use previsoes with accuracy_score and other metrics:
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
@@ -97,7 +102,7 @@ from sklearn.metrics import confusion_matrix
 matriz = confusion_matrix(classe_teste, previsoes)
 # Visualize a matriz de confusão usando seaborn
 plt.figure(figsize=(8, 6))
-sns.heatmap(matriz, annot=True, fmt="d", cmap="Blues", cbar=False)
+sns.heatmap(matriz, annot=True, fmt="d", cmap="Blues", cbar=False,linewidths=1.0, linecolor='grey')
 plt.xlabel("Classe Prevista",fontweight="bold")
 plt.ylabel("Classe Real",fontweight="bold")
 plt.title("Matriz de Confusão",fontweight="bold")
