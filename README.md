@@ -40,7 +40,7 @@ doença cardíaca no paciente.
 - Recall: 0.965517
 - F1-Score: 0.888889
 
-<img width="491" alt="Figure 2024-11-13 221446" src="https://github.com/user-attachments/assets/e04759ca-65d0-4fa3-b1fe-8c748e62e2c3">
+<img width="491" alt="Figure 2024-11-13 221446" src="https://github.com/user-attachments/assets/e2d8dd32-8b90-4bb5-bbff-6bc4311de784">
 
 <div>
   <p><strong>Obs:</strong> Neste treinamento foi priorizado ter o menor possível Falsos Negativos, ou seja, 
