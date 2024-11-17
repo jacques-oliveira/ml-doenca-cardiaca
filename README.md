@@ -25,10 +25,13 @@ doença cardíaca no paciente.
 - thal 3 = normal; 6 = defeito fixo; 7 = defeito reversível de dor no peito
 - target 1 or 0 (1 = doente e 0 = saudável)
 
-## Apresentar como resultado a acurácia, precisão, recall, f1_score e matriz de confusão do classificador
+## Apresentar como resultado a acurácia, Precisão, Recall, F1_score e Matriz de Confusão do classificador
 - Utilizar Batch Size = 10
 - Percentual para %teste = 19
-
+- Uso de One-Hot-Encoding
+- BatchNormalization
+- kernel_regularizer
+  
 ## Desenvolvimento
 - Python 3.11.10
 - keras, sklearn, numpy, pandas, matplotlib, seaborn
