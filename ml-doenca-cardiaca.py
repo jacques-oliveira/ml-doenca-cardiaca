@@ -17,6 +17,28 @@ print(entradas.isnull().sum())
 
 print(saida.isna().sum())
 #%%
+#OneHotEncoding
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.compose import ColumnTransformer
+
+labelEncoder_entradas = LabelEncoder()
+entradas.iloc[:,1] = labelEncoder_entradas.fit_transform(entradas.iloc[:,1])
+entradas.iloc[:,2] = labelEncoder_entradas.fit_transform(entradas.iloc[:,2])
+entradas.iloc[:,5] = labelEncoder_entradas.fit_transform(entradas.iloc[:,5])
+entradas.iloc[:,6] = labelEncoder_entradas.fit_transform(entradas.iloc[:,6])
+entradas.iloc[:,8] = labelEncoder_entradas.fit_transform(entradas.iloc[:,8])
+entradas.iloc[:,10] = labelEncoder_entradas.fit_transform(entradas.iloc[:,10])
+entradas.iloc[:,11] = labelEncoder_entradas.fit_transform(entradas.iloc[:,11])
+entradas.iloc[:,12] = labelEncoder_entradas.fit_transform(entradas.iloc[:,12])
+
+print(entradas.shape)
+#%%
+oneHotEnconder = ColumnTransformer(transformers=[("OneHot", OneHotEncoder(), [1,2,5,6,8,10,11,12])], remainder='passthrough')
+entradas = oneHotEnconder.fit_transform(entradas)
+print(entradas.shape)
+#%%
+print(entradas.shape)
+#%%
 #Separando teste e treinamento
 from sklearn.model_selection import train_test_split
 #19% para teste
@@ -27,21 +49,6 @@ print('previsores_teste: ' + str(previsores_teste.shape))
 print('classe_treinamento: ' + str(classe_treinamento.shape))
 print('classe_teste: ' + str(classe_teste.shape))
 #%%
-#Normalizando
-from sklearn.preprocessing import MinMaxScaler
-#%%
-# 1. Crie um objeto MinMaxScaler
-scaler = MinMaxScaler()
-
-# 2. Ajuste o scaler aos seus dados de treinamento (previsores_treinamento)
-scaler.fit(previsores_treinamento)
-
-# 3. Transforme os dados de treinamento e teste usando o scaler ajustado
-previsores_treinamento_normalizados = scaler.transform(previsores_treinamento)
-previsores_teste_normalizados = scaler.transform(previsores_teste)
-#%%
-print(entradas.shape)
-#%%
 import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
@@ -51,23 +58,23 @@ from keras.layers import BatchNormalization
 from keras.initializers import HeNormal
 #%%
 classificador = Sequential()
-classificador.add(Dense(units = 128, input_dim = 13
-                        ,kernel_initializer='random_uniform',kernel_regularizer=l2(0.0005),
+classificador.add(Dense(units = 128, input_dim = entradas.shape[1]
+                        ,kernel_initializer='random_uniform',kernel_regularizer=l2(0.0001),
                         activation = 'relu'))
 classificador.add(BatchNormalization())  # Adicionando Batch Normalization
 
 classificador.add(Dense(units = 64
-                        ,kernel_initializer=HeNormal(),
+                        ,kernel_initializer='random_uniform',
                         activation = 'relu'))
-classificador.add(Dropout(0.05))  # Dropout para regularização 
+#classificador.add(Dropout(0.05))  # Dropout para regularização 
 
 classificador.add(Dense(units = 48
-                        ,kernel_initializer=HeNormal(),
+                        ,kernel_initializer='random_uniform',
                         activation = 'relu'))
-classificador.add(Dropout(0.05))  # Dropout para regularização
+#classificador.add(Dropout(0.05))  # Dropout para regularização
 
 classificador.add(Dense(units = 1
-                        ,kernel_initializer=HeNormal(),
+                        ,kernel_initializer='random_uniform',
                         activation = 'sigmoid'))
 
 #classificador.compile(optimizer = 'adam', loss = 'binary_crossentropy',metrics = ['binary_accuracy'])
@@ -85,7 +92,7 @@ previsoes = classificador.predict(previsores_teste)
 
 import numpy as np
 # Convert probabilities to class labels using a threshold (e.g., 0.5)
-previsoes = (previsoes > 0.2).astype(int)
+previsoes = (previsoes > 0.4).astype(int)
 
 # Now, you can use previsoes with accuracy_score and other metrics:
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
