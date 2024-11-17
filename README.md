@@ -31,7 +31,12 @@ doença cardíaca no paciente.
 - Uso de One-Hot-Encoding
 - BatchNormalization
 - kernel_regularizer
-  
+
+<P>
+  <strong>Obs:</strong> Com uso de One-Hot-Encoding o número de entradas muda, preferi usar no <strong>input_dim = entradas.shape[1]</strong>,
+  que retorna o número atualizado de entradas
+</P>  
+
 ## Desenvolvimento
 - Python 3.11.10
 - keras, sklearn, numpy, pandas, matplotlib, seaborn
