@@ -58,8 +58,8 @@ from keras.layers import BatchNormalization
 from keras.initializers import HeNormal
 #%%
 classificador = Sequential()
-classificador.add(Dense(units = 32, input_dim = entradas.shape[1]
-                        ,kernel_initializer='random_uniform',
+classificador.add(Dense(units = 128, input_dim = entradas.shape[1]
+                        ,kernel_initializer='random_uniform',kernel_regularizer=l2(0.0001),
                         activation = 'relu'))
 classificador.add(BatchNormalization())  # Adicionando Batch Normalization
 
