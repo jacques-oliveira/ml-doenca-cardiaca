@@ -43,12 +43,12 @@ doença cardíaca no paciente.
 - IDE Spyder 6.0.2
 
 ## Resultados
-- Acurácia: 0.827586
-- Precision: 0.804878
-- Recall: 0.942857
-- F1-Score: 0.868421
-- 
-<img width="491" alt="Figure 2024-11-13 221446" src="https://github.com/user-attachments/assets/e705e390-5021-4c37-a215-40a15fc51eb7">
+- Acurácia: 0.862069
+- Precision: 0.794118
+- Recall: 0.964286
+- F1-Score: 0.870968
+
+<img width="491" alt="Figure 2024-11-13 221446" src="https://github.com/user-attachments/assets/ce697f58-5bce-4a5e-bc9e-476c3a0ae49c">
 
 <div>
   <p><strong>Obs:</strong> Neste treinamento foi priorizado ter o menor possível Falsos Negativos, ou seja, 
